@@ -72,3 +72,7 @@ lwe/[KV] generate db and params, m: 77824, w: 820
                         change: [-8.7076% -0.2040% +8.5338%] (p = 0.96 > 0.05)
                         No change in performance detected.
 [KV] Finished DB generation benchmarks
+
+
+# 如何bench
+运行benches/bench.rs 看里面的源码

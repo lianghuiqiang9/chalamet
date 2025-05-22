@@ -13,12 +13,14 @@ use crate::utils::random::generate_seed;
 
 use xorf::BinaryFuseP32;
 
+//key-value pairs
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct KeyValue {
   pub key: [u64; 4],
   pub value: Vec<u32>,
 }
 
+//从string 编码进来
 impl KeyValue {
   pub fn from_base64_strings(
     k: &str,
@@ -32,6 +34,7 @@ impl KeyValue {
   }
 }
 
+// 定义BFF编码后的向量
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct StorageFilters {
   filters: Vec<BinaryFuseP32>,
@@ -41,6 +44,7 @@ struct StorageFilters {
   segment_count_length: u32,
 }
 
+//从kvs向量中编码到bff.fingerprient
 impl StorageFilters {
   fn from_kvs(
     kvs: &[KeyValue],
@@ -81,6 +85,7 @@ impl StorageFilters {
   }
 }
 
+//filter参数
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct FilterParams {
   pub seed: [u8; 32],
@@ -108,6 +113,7 @@ impl FilterParams {
   }
 }
 
+//定义KV数据库
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct KVDatabase {
   pub entries: Vec<Vec<u32>>,
@@ -184,6 +190,7 @@ impl KVDatabase {
   }
 }
 
+//实现了DatabaseMatrix的方法
 impl DatabaseMatrix for KVDatabase {
   fn switch_fmt(&mut self) {
     self.entries = swap_matrix_fmt(&self.entries);
@@ -242,6 +249,7 @@ impl DatabaseMatrix for KVDatabase {
   }
 }
 
+// 将string变为u32
 fn construct_row(
   element: &str,
   plaintext_bits: usize,
@@ -334,9 +342,12 @@ impl BaseParams for KVParams {
 mod tests {
   use super::*;
 
+  //cargo test check_consistent_retrieval --  --nocapture
   #[test]
   fn check_consistent_retrieval() {
+    println!("hello check_consistent_retrieval");
     let key = [1u64, 2, 3, 4];
+    dbg!(&key);
     let value = vec![1u32, 2u32, 3u32];
     let row_width = value.len();
     let kv = KeyValue { key, value };
