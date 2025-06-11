@@ -1,6 +1,7 @@
 use clap::{App, Arg};
 use std::env;
 
+//#[derive(Debug)]
 pub struct CLIFlags {
   pub m: usize,
   pub lwe_dim: usize,
@@ -71,6 +72,7 @@ pub fn parse_cli_flags() -> CLIFlags {
   }
 }
 
+// 将输入的信息放到CLFlags中
 pub fn parse_from_env() -> CLIFlags {
   let elem_size: usize =
     env::var("PIR_ELEM_SIZE_BITS").unwrap().parse().unwrap();

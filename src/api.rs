@@ -16,6 +16,7 @@ pub use crate::utils::format::*;
 use crate::utils::lwe::*;
 use crate::utils::matrices::*;
 
+use std::time::{Instant};
 /// A `Shard` is an instance of a database, where each row corresponds
 /// to a single element, that has been preprocessed by the server.
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -191,6 +192,7 @@ impl KVShard {
       segment_length_mask,
       segment_count_length,
     } = db.get_filter_params();
+    let _start = Instant::now();
     let base_params = KVParams::new(
       &db,
       lwe_dim,
@@ -199,6 +201,9 @@ impl KVShard {
       segment_length_mask,
       segment_count_length,
     );
+    let _duration = _start.elapsed();
+    println!("Time elapsed in A cdot bd         : {:?}", _duration);
+    //println!("rhs {:?}, {:?}",base_params.get_rhs().len(),base_params.get_rhs()[0].len());
     Ok(Self { db, base_params })
   }
 
@@ -333,6 +338,7 @@ impl QueryParams<KVDatabase, FilterParams> {
   /// Generates `QueryParams` for a `Database` that is KV
   fn new(cp: &CommonParams, params: &KVParams) -> ResultBoxedError<Self> {
     let s = random_ternary_vector(params.get_dim());
+    //println!("s.size(): {}",s.len());
     Ok(Self {
       lhs: cp.mult_left(&s)?,
       rhs: params.mult_right(&s)?,
@@ -357,6 +363,7 @@ impl QueryParams<KVDatabase, FilterParams> {
       return Err("No filter parameters set for KV QueryParams".into());
     }
     let indices = self.extra_params.as_ref().unwrap().get_hash_evals(key);
+    //println!("indices: {}",indices.len());
     for row_index in indices {
       lhs[row_index] = lhs[row_index].wrapping_add(query_indicator);
     }

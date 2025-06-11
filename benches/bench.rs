@@ -6,8 +6,13 @@ use keyword_pir_lwe::api::{
 use keyword_pir_lwe::db::{DatabaseMatrix, KeyValue};
 use pi_rs_cli_utils::*;
 use std::time::Duration;
-
+use std::mem;
 use keyword_pir_lwe::db::FilterParams;
+//use std::time::{Instant};
+
+fn total_data_size(data: &Vec<Vec<u32>>) -> usize {
+  data.iter().map(|inner_vec| inner_vec.len() * mem::size_of::<u32>()).sum()
+}
 
 fn criterion_benchmark(c: &mut Criterion) {
   let CLIFlags {
@@ -19,6 +24,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     keyword,
     ..
   } = parse_from_env();
+  //println!("CLIFlags: {:?}",CLIFlags);
   let mut lwe_group = c.benchmark_group("lwe");
 
   println!("Chosen parameters are: m: {}, lwe_dim: {}, elem_size: {}, plaintext-bits: {}", m, lwe_dim, elem_size, plaintext_bits);
@@ -30,6 +36,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     let kv_db_eles = bench_utils::generate_kv_db_elems(m, (elem_size + 7) / 8);
     let keys: Vec<String> = kv_db_eles.iter().map(|e| e.0.clone()).collect();
     let values: Vec<String> = kv_db_eles.iter().map(|e| e.1.clone()).collect();
+    //let _start = Instant::now();
     let shard = KVShard::from_base64_strings(
       &keys,
       &values,
@@ -39,6 +46,11 @@ fn criterion_benchmark(c: &mut Criterion) {
       plaintext_bits,
     )
     .unwrap();
+    //let _duration = _start.elapsed();
+    //println!("Time elapsed in bff: {:?}", _duration);
+    println!("A cdot db size : {:?} Kbytes", total_data_size(&shard.get_base_params().get_rhs())/1024);
+    //println!("Size of _q: {:?} Kbytes", mem::size_of_val(_q.as_slice())/1024);
+
     println!("[KV] Setup complete, starting benchmarks...");
 
     println!("[KV] Benchmarking online steps...");
@@ -78,6 +90,7 @@ fn criterion_benchmark(c: &mut Criterion) {
   }
 }
 
+// 程序入口
 criterion_group!(benches, criterion_benchmark);
 criterion_main!(benches);
 
@@ -168,7 +181,7 @@ fn _bench_kv_db_generation(
       });
     },
   );
-  println!("[KV] Finished DB generation benchmarks");
+  println!("[KV] Finished DB generation benchmarks");
 }
 
 fn _bench_client_query(
@@ -243,6 +256,7 @@ fn _bench_client_query(
   println!("Finished client query benchmarks");
 }
 
+// 进入c和参数shard和keyword DB
 fn _bench_client_kv_query(
   c: &mut BenchmarkGroup<criterion::measurement::WallTime>,
   shard: &KVShard,
@@ -275,8 +289,21 @@ fn _bench_client_kv_query(
 
   println!("[KV] Starting client query benchmarks");
   let mut _qp = generate_kv_query_params(&cp, bp).unwrap();
+  
   let _q = _qp.generate_query(&kv.key).unwrap();
+  //println!("_q {:?} ", _q);
+  //let _qq=_q.as_slice();
+  //println!("_qq {:?} ", _qq);
+  println!("Size of _q: {:?} Kbytes", mem::size_of_val(_q.as_slice())/1024); // 切片指向的数据大小（不是指针本身）
   let mut _resp = shard.respond(&_q).unwrap();
+  //println!("_resp {:?} ", _resp);
+  println!("Size of _resp: {:?} bytes", mem::size_of_val(&_resp)); // 切片指向的数据大小（不是指针本身）
+
+  let resp: Response = bincode::deserialize(&_resp).unwrap();
+  let output = _qp.parse_resp_as_row(&resp, &kv.key).unwrap();
+  println!("expect_output {:?}, actural_output {:?} ", kv.value, output);
+  //assert_eq!(output, kv.value);
+
   c.bench_function(
     format!(
       "[KV] create client query params, lwe_dim: {}, matrix_height: {}, omega: {}",

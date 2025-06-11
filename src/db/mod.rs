@@ -37,6 +37,8 @@ pub trait BaseParams {
       dim,
       db.get_matrix_height(),
     ));
+    //println!("lhs {:?}, {:?}",lhs.len(),lhs[0].len());
+
     (0..T::get_row_width(db.get_elem_size(), db.get_plaintext_bits()))
       .map(|i| {
         let mut col = Vec::with_capacity(db.get_matrix_height());
