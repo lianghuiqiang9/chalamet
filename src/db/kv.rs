@@ -109,6 +109,7 @@ impl FilterParams {
   }
 
   pub fn unmask_value(&self, masked: u32, key: &[u64; 4], label: u64) -> u32 {
+    //println!("self.get_key_fingerprint(key, label):{:?}",self.get_key_fingerprint(key, label) as u32);
     masked.wrapping_add(self.get_key_fingerprint(key, label) as u32)
   }
 }

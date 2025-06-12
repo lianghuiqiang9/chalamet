@@ -226,6 +226,7 @@ impl KVShard {
         .map(|i| self.db.vec_mult(q.as_slice(), i))
         .collect(),
     );
+    //println!("respff:{:?}", resp.as_slice());
     let se = bincode::serialize(&resp);
 
     Ok(se?)
@@ -363,10 +364,13 @@ impl QueryParams<KVDatabase, FilterParams> {
       return Err("No filter parameters set for KV QueryParams".into());
     }
     let indices = self.extra_params.as_ref().unwrap().get_hash_evals(key);
-    //println!("indices: {}",indices.len());
+    //println!("indices: {}, indices: {:?}",indices.len(), indices);
+    //println!("lhs: {:?}",lhs);
+    //println!("query_indicator: {:?}",query_indicator);
     for row_index in indices {
       lhs[row_index] = lhs[row_index].wrapping_add(query_indicator);
     }
+    //println!("lhs: {:?}",lhs);
     Ok(Query(lhs))
   }
 
@@ -402,6 +406,7 @@ impl QueryParams<KVDatabase, FilterParams> {
           }
           let masked = rounded_res;
           let unmasked = fp.unmask_value(masked, key, i as u64);
+          //println!("masked : {:?},{:?}, unmasked : {:?}",masked,masked % plaintext_size,unmasked);
           unmasked % plaintext_size
         })
         .collect(),

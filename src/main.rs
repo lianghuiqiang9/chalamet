@@ -97,7 +97,7 @@ fn main(){
   println!("元素大小（bit）: {}", args.elem_size);
   println!("明文位数: {}", args.plaintext_bits);
 
-  let kv_db_eles = generate_kv_db_elems(m, (args.elem_size + 7) / 8);
+  let kv_db_eles = generate_kv_db_elems(m, (args.elem_size + 7) / 8); // +7 完全是为了多取一个u8
   let keys: Vec<String> = kv_db_eles.iter().map(|e| e.0.clone()).collect();
   let values: Vec<String> = kv_db_eles.iter().map(|e| e.1.clone()).collect();
   //let _start = Instant::now();
@@ -116,6 +116,7 @@ fn main(){
   //println!("Size of _q: {:?} Kbytes", mem::size_of_val(_q.as_slice())/1024);
 
   let example_kv:(String, String)=(keys[0].clone(), values[0].clone());
+  //println!("example_kv: {:?}",example_kv);
   let db = shard.get_db();
   let &FilterParams {
     seed: _,
@@ -168,6 +169,7 @@ fn main(){
 
   let _start = Instant::now();
   let resp: Response = bincode::deserialize(&_resp).unwrap();
+  //println!("kv.key : {:?}",kv.key);
   let output = _qp.parse_resp_as_row(&resp, &kv.key).unwrap();
   let _duration = _start.elapsed();
   println!("Time elapsed in client reconstruct: {:?}", _duration);
