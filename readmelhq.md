@@ -11,7 +11,7 @@ cargo run --release -- --logm 19 -l 1774 -e 56 --plaintext-bits 9
 
 cargo run --release -- --logm 20 -l 1774 -e 56 --plaintext-bits 9 
 
-
+script -f output.txt
 
 
 # 感悟
