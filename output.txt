@@ -103,3 +103,101 @@ m = 2^22 = 4194304
 LWE 维度: 1774
 元素大小（bit）: 56
 明文位数: 9
+Time elapsed in A cdot bd         : 360.498549749s
+A cdot db size                    : 48.507813 Kbytes
+row: 7, col: 4718592
+Time elapsed in client pre-query  : 8.299535104s
+Time elapsed in client query      : 4.409423ms
+Size of query                     : 18432.0 Kbytes
+Time elapsed in server respond    : 20.505678ms
+Size of response                  : 24 bytes
+Time elapsed in client reconstruct: 2.56µs
+expect_output [197, 12, 69, 469, 210, 270, 0], actural_output [197, 12, 69, 469, 210, 270, 0] 
+[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
+[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+
+[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
+[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.37s
+[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 23 -l 1774 -e 56 --plaintext-bits 9`
+logm: 23
+m = 2^23 = 8388608
+LWE 维度: 1774
+元素大小（bit）: 56
+明文位数: 9
+run.sh: line 6: 1692792 Killed                  cargo run --release -- --logm 23 -l 1774 -e 56 --plaintext-bits 9
+[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
+[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+
+[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
+[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 5.66s
+[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 24 -l 1774 -e 56 --plaintext-bits 9`
+logm: 24
+m = 2^24 = 16777216
+LWE 维度: 1774
+元素大小（bit）: 56
+明文位数: 9
+run.sh: line 8: 1695155 Killed                  cargo run --release -- --logm 24 -l 1774 -e 56 --plaintext-bits 9
+[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
+[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+
+[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
+[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 3.72s
+[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 25 -l 1774 -e 56 --plaintext-bits 9`
+logm: 25
+m = 2^25 = 33554432
+LWE 维度: 1774
+元素大小（bit）: 56
+明文位数: 9
+run.sh: line 10: 1696975 Killed                  cargo run --release -- --logm 25 -l 1774 -e 56 --plaintext-bits 9
+[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ [7mcargo run --release -- --logm 24 -l 1774 -e 56 --plaintext-bits 9[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccargo run --release -- --logm 24 -l 1774 -e 56 --plaintext-bits 9
+[?2004l[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
+[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
+[0m   [0m[0m[1m[38;5;12m|[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
+[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+
+[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
+[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 2.80s
+[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 24 -l 1774 -e 56 --plaintext-bits 9`
+logm: 24
+m = 2^24 = 16777216
+LWE 维度: 1774
+元素大小（bit）: 56
+明文位数: 9
+^C
+^C
+
+[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ 
+[?2004l[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ [?2004l
+exit
+
+Script done on 2025-06-12 17:08:53+00:00 [COMMAND_EXIT_CODE="130"]
