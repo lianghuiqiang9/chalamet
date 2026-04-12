@@ -1,0 +1,67 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+WARNING: HTML report generation will become a non-default optional feature in Criterion.rs 0.4.0.
+This feature is being moved to cargo-criterion (https://github.com/bheisler/cargo-criterion) and will be optional in a future version of Criterion.rs. To silence this warning, either switch to cargo-criterion or enable the 'html_reports' feature in your Cargo.toml.
+
+Gnuplot not found, using plotters backend
+Chosen parameters are: m: 4194304, lwe_dim: 1774, elem_size: 288, plaintext-bits: 9
+Benchmarking offline: false
+Benchmarking keyword: true
+Setting up DB for benchmarking. This might take a while...
+Time elapsed in A cdot bd         : 454.161127501s
+Time elapsed in generate db and hint: 555.099261574s
+client hint, A cdot db size      : 0.21655273 Mbytes
+[KV] Setup complete, starting benchmarks...
+[KV] Benchmarking online steps...
+[KV] Filter Params: segment-len: 16384, segment-len-mask: 16383, segment-count-len: 4685824
+[KV] Starting client query benchmarks
+Size of _q: 18432 Kbytes
+Size of _resp: 24 bytes
+Benchmarking lwe/[KV] create client pre-query params, lwe_dim: 1774, matrix_height: 4718592, omega: 32
+Benchmarking lwe/[KV] create client pre-query params, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 690.2s, or reduce sample count to 10.
+Benchmarking lwe/[KV] create client pre-query params, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Collecting 100 samples in estimated 690.15 s (100 iterations)
+Benchmarking lwe/[KV] create client pre-query params, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Analyzing
+lwe/[KV] create client pre-query params, lwe_dim: 1774, matrix_height: 4718592, omega: 32
+                        time:   [6.8960 s 6.9328 s 6.9757 s]
+                        change: [+313.53% +316.15% +318.81%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 10 outliers among 100 measurements (10.00%)
+  2 (2.00%) high mild
+  8 (8.00%) high severe
+Benchmarking lwe/[KV] create client query, lwe_dim: 1774, matrix_height: 4718592, omega: 32
+Benchmarking lwe/[KV] create client query, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Warming up for 3.0000 s
+Benchmarking lwe/[KV] create client query, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Collecting 100 samples in estimated 5.5141 s (1000 iterations)
+Benchmarking lwe/[KV] create client query, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Analyzing
+lwe/[KV] create client query, lwe_dim: 1774, matrix_height: 4718592, omega: 32
+                        time:   [5.3794 ms 5.3832 ms 5.3876 ms]
+Found 3 outliers among 100 measurements (3.00%)
+  1 (1.00%) high mild
+  2 (2.00%) high severe
+Benchmarking lwe/[KV] server response, lwe_dim: 1774, matrix_height: 4718592, omega: 32
+Benchmarking lwe/[KV] server response, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 12.0s, or reduce sample count to 40.
+Benchmarking lwe/[KV] server response, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Collecting 100 samples in estimated 11.993 s (100 iterations)
+Benchmarking lwe/[KV] server response, lwe_dim: 1774, matrix_height: 4718592, omega: 32: Analyzing
+lwe/[KV] server response, lwe_dim: 1774, matrix_height: 4718592, omega: 32
+                        time:   [114.54 ms 114.62 ms 114.71 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking lwe/[KV] client parse server response, e.g. reconstruct, lwe_dim: 1774, matrix_height: 4718592, omeg...
+Benchmarking lwe/[KV] client parse server response, e.g. reconstruct, lwe_dim: 1774, matrix_height: 4718592, omeg...: Warming up for 3.0000 s
+Benchmarking lwe/[KV] client parse server response, e.g. reconstruct, lwe_dim: 1774, matrix_height: 4718592, omeg...: Collecting 100 samples in estimated 5.0966 s (131k iterations)
+Benchmarking lwe/[KV] client parse server response, e.g. reconstruct, lwe_dim: 1774, matrix_height: 4718592, omeg...: Analyzing
+lwe/[KV] client parse server response, e.g. reconstruct, lwe_dim: 1774, matrix_height: 4718592, omeg...
+                        time:   [38.776 µs 38.783 µs 38.792 µs]
+                        change: [-86.179% -86.156% -86.141%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 12 outliers among 100 measurements (12.00%)
+  10 (10.00%) high mild
+  2 (2.00%) high severe
+[KV] Finished client query benchmarks
+
