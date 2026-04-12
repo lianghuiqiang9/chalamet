@@ -1,203 +1,419 @@
-Script started on 2025-06-12 03:23:50+00:00 [TERM="xterm-256color" TTY="/dev/pts/48" COLUMNS="168" LINES="20"]
-[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ [7mcargo run --release -- --logm 20 -l 1774 -e 56 --plaintext-bits 9 [27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccargo run --release -- --logm 20 -l 1774 -e 56 --plaintext-bits 9 
-[?2004l[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 18 -l 1774 -e 288 --plaintext-bits 10`
+logm: 18
+m = 2^18 = 262144
+LWE dimension: 1774
+entry length (bit): 288
+plaintext length: 10
+Time elapsed in A cdot bd         : 20.067445587s
+ client hint, A cdot db size      : 0.19625092 Mbytes
+row: 29, col: 303104
+Time elapsed in client pre-query  : 393.700361ms
+Time elapsed in client onl-query  : 447.689µs
+Time elapsed in client query      : 447.689µs
+Size of query                     : 1184.0 Kbytes
+Time elapsed in server respond    : 4.785166ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 3.64µs
+expect_output [474, 382, 843, 689, 962, 662, 162, 89, 902, 109, 217, 971, 1002, 87, 732, 11, 62, 994, 516, 934, 583, 158, 992, 826, 675, 762, 188, 792, 255], actural_output [474, 382, 843, 689, 962, 662, 162, 89, 902, 109, 217, 971, 1002, 87, 732, 11, 62, 994, 516, 934, 583, 158, 992, 826, 675, 762, 188, 792, 255] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.26s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 20 -l 1774 -e 56 --plaintext-bits 9`
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.06s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 20 -l 1774 -e 288 --plaintext-bits 9`
 logm: 20
 m = 2^20 = 1048576
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-Time elapsed in A cdot bd         : 86.531966706s
-A cdot db size                    : 48.507813 Kbytes
-row: 7, col: 1179648
-Time elapsed in client pre-query  : 2.259205374s
-Time elapsed in client query      : 1.568676ms
+LWE dimension: 1774
+entry length (bit): 288
+plaintext length: 9
+Time elapsed in A cdot bd         : 87.314080081s
+ client hint, A cdot db size      : 0.21655273 Mbytes
+row: 32, col: 1179648
+Time elapsed in client pre-query  : 1.511263199s
+Time elapsed in client onl-query  : 1.748981ms
+Time elapsed in client query      : 1.748981ms
 Size of query                     : 4608.0 Kbytes
-Time elapsed in server respond    : 5.671061ms
-Size of response                  : 24 bytes
-Time elapsed in client reconstruct: 3.76µs
-expect_output [190, 350, 489, 18, 73, 210, 3], actural_output [190, 350, 489, 18, 73, 210, 3] 
-[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ [7mcargo run --release -- --logm 25 -l 1774 -e 56 --plaintext-bits 9[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccargo run --release -- --logm 25 -l 1774 -e 56 --plaintext-bits 9
-[?2004l[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+Time elapsed in server respond    : 23.734336ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 7.356µs
+expect_output [277, 45, 280, 25, 438, 116, 175, 356, 133, 20, 23, 357, 397, 61, 15, 57, 130, 208, 252, 457, 335, 378, 23, 267, 313, 448, 505, 16, 64, 394, 483, 89], actural_output [277, 45, 280, 25, 438, 116, 175, 356, 133, 20, 23, 357, 397, 61, 15, 57, 130, 208, 252, 457, 335, 378, 23, 267, 313, 448, 505, 16, 64, 394, 483, 89] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.10s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 25 -l 1774 -e 56 --plaintext-bits 9`
-logm: 25
-m = 2^25 = 33554432
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-^C
-^C
-
-[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ 
-[?2004l[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ ^C[?2004l[?2004h[?2004l
-[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ bash run.sh 
-[?2004l[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
-
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.33s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 21 -l 1774 -e 56 --plaintext-bits 9`
-logm: 21
-m = 2^21 = 2097152
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-Time elapsed in A cdot bd         : 177.871314247s
-A cdot db size                    : 48.507813 Kbytes
-row: 7, col: 2359296
-Time elapsed in client pre-query  : 4.218377231s
-Time elapsed in client query      : 2.550444ms
-Size of query                     : 9216.0 Kbytes
-Time elapsed in server respond    : 10.496105ms
-Size of response                  : 24 bytes
-Time elapsed in client reconstruct: 2.59µs
-expect_output [4, 207, 334, 51, 13, 350, 3], actural_output [4, 207, 334, 51, 13, 350, 3] 
-[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
-
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.10s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 56 --plaintext-bits 9`
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.06s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 288 --plaintext-bits 9`
 logm: 22
 m = 2^22 = 4194304
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-Time elapsed in A cdot bd         : 360.498549749s
-A cdot db size                    : 48.507813 Kbytes
-row: 7, col: 4718592
-Time elapsed in client pre-query  : 8.299535104s
-Time elapsed in client query      : 4.409423ms
+LWE dimension: 1774
+entry length (bit): 288
+plaintext length: 9
+Time elapsed in A cdot bd         : 460.288807732s
+ client hint, A cdot db size      : 0.21655273 Mbytes
+row: 32, col: 4718592
+Time elapsed in client pre-query  : 5.969912493s
+Time elapsed in client onl-query  : 7.240158ms
+Time elapsed in client query      : 7.240158ms
 Size of query                     : 18432.0 Kbytes
-Time elapsed in server respond    : 20.505678ms
-Size of response                  : 24 bytes
-Time elapsed in client reconstruct: 2.56µs
-expect_output [197, 12, 69, 469, 210, 270, 0], actural_output [197, 12, 69, 469, 210, 270, 0] 
-[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+Time elapsed in server respond    : 119.488045ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 4.135µs
+expect_output [506, 443, 253, 411, 457, 31, 171, 232, 27, 456, 55, 417, 232, 306, 54, 10, 432, 320, 14, 184, 163, 469, 491, 335, 361, 297, 10, 479, 278, 109, 222, 50], actural_output [506, 443, 253, 411, 457, 31, 171, 232, 27, 456, 55, 417, 232, 306, 54, 10, 432, 320, 14, 184, 163, 469, 491, 335, 361, 297, 10, 479, 278, 109, 222, 50] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.37s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 23 -l 1774 -e 56 --plaintext-bits 9`
-logm: 23
-m = 2^23 = 8388608
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-run.sh: line 6: 1692792 Killed                  cargo run --release -- --logm 23 -l 1774 -e 56 --plaintext-bits 9
-[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.24s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 18 -l 1774 -e 544 --plaintext-bits 10`
+logm: 18
+m = 2^18 = 262144
+LWE dimension: 1774
+entry length (bit): 544
+plaintext length: 10
+Time elapsed in A cdot bd         : 26.580128069s
+ client hint, A cdot db size      : 0.3722 Mbytes
+row: 55, col: 303104
+Time elapsed in client pre-query  : 390.899179ms
+Time elapsed in client onl-query  : 462.916µs
+Time elapsed in client query      : 462.916µs
+Size of query                     : 1184.0 Kbytes
+Time elapsed in server respond    : 9.435586ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 5.009µs
+expect_output [8, 807, 654, 978, 570, 661, 550, 576, 744, 761, 776, 359, 401, 328, 993, 648, 478, 280, 84, 53, 467, 103, 515, 290, 584, 836, 76, 26, 0, 598, 724, 216, 277, 916, 656, 49, 686, 271, 367, 872, 135, 152, 873, 749, 84, 1001, 664, 851, 842, 942, 178, 67, 353, 846, 13], actural_output [8, 807, 654, 978, 570, 661, 550, 576, 744, 761, 776, 359, 401, 328, 993, 648, 478, 280, 84, 53, 467, 103, 515, 290, 584, 836, 76, 26, 0, 598, 724, 216, 277, 916, 656, 49, 686, 271, 367, 872, 135, 152, 873, 749, 84, 1001, 664, 851, 842, 942, 178, 67, 353, 846, 13] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 5.66s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 24 -l 1774 -e 56 --plaintext-bits 9`
-logm: 24
-m = 2^24 = 16777216
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-run.sh: line 8: 1695155 Killed                  cargo run --release -- --logm 24 -l 1774 -e 56 --plaintext-bits 9
-[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.06s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 20 -l 1774 -e 544 --plaintext-bits 9`
+logm: 20
+m = 2^20 = 1048576
+LWE dimension: 1774
+entry length (bit): 544
+plaintext length: 9
+Time elapsed in A cdot bd         : 117.960479425s
+ client hint, A cdot db size      : 0.41280365 Mbytes
+row: 61, col: 1179648
+Time elapsed in client pre-query  : 1.494513507s
+Time elapsed in client onl-query  : 1.825437ms
+Time elapsed in client query      : 1.825437ms
+Size of query                     : 4608.0 Kbytes
+Time elapsed in server respond    : 41.801386ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 5.755µs
+expect_output [110, 382, 10, 394, 65, 213, 495, 159, 25, 46, 371, 297, 241, 334, 30, 82, 177, 128, 221, 131, 463, 158, 327, 253, 244, 216, 278, 46, 410, 343, 101, 269, 1, 204, 148, 300, 262, 460, 4, 346, 214, 155, 298, 454, 228, 138, 4, 309, 507, 349, 303, 472, 164, 98, 182, 248, 62, 6, 258, 372, 10], actural_output [110, 382, 10, 394, 65, 213, 495, 159, 25, 46, 371, 297, 241, 334, 30, 82, 177, 128, 221, 131, 463, 158, 327, 253, 244, 216, 278, 46, 410, 343, 101, 269, 1, 204, 148, 300, 262, 460, 4, 346, 214, 155, 298, 454, 228, 138, 4, 309, 507, 349, 303, 472, 164, 98, 182, 248, 62, 6, 258, 372, 10] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 3.72s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 25 -l 1774 -e 56 --plaintext-bits 9`
-logm: 25
-m = 2^25 = 33554432
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-run.sh: line 10: 1696975 Killed                  cargo run --release -- --logm 25 -l 1774 -e 56 --plaintext-bits 9
-[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ [7mcargo run --release -- --logm 24 -l 1774 -e 56 --plaintext-bits 9[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccargo run --release -- --logm 24 -l 1774 -e 56 --plaintext-bits 9
-[?2004l[0m[1m[33mwarning[0m[0m[1m: unexpected `cfg` condition value: `nightly`[0m
-[0m  [0m[0m[1m[38;5;12m--> [0m[0mbff-modp/src/lib.rs:65:13[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m[1m[38;5;12m65[0m[0m [0m[0m[1m[38;5;12m|[0m[0m [0m[0m#![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)][0m
-[0m   [0m[0m[1m[38;5;12m|[0m[0m             [0m[0m[1m[33m^^^^^^^^^^^^^^^^^^^[0m
-[0m   [0m[0m[1m[38;5;12m|[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mhelp[0m[0m: consider adding `nightly` as a feature in `Cargo.toml`[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration[0m
-[0m   [0m[0m[1m[38;5;12m= [0m[0m[1mnote[0m[0m: `#[warn(unexpected_cfgs)]` on by default[0m
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.06s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 544 --plaintext-bits 9`
+logm: 22
+m = 2^22 = 4194304
+LWE dimension: 1774
+entry length (bit): 544
+plaintext length: 9
+Time elapsed in A cdot bd         : 541.694985019s
+ client hint, A cdot db size      : 0.41280365 Mbytes
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              row: 61, col: 4718592
+Time elapsed in client pre-query  : 5.936269143s
+Time elapsed in client onl-query  : 7.283598ms
+Time elapsed in client query      : 7.283598ms
+Size of query                     : 18432.0 Kbytes
+Time elapsed in server respond    : 192.980057ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 5.254µs
+expect_output [505, 109, 209, 454, 11, 510, 107, 372, 370, 12, 459, 124, 85, 23, 508, 236, 406, 444, 299, 76, 238, 133, 236, 511, 411, 240, 328, 293, 281, 140, 158, 499, 294, 431, 340, 364, 267, 59, 375, 167, 81, 123, 84, 396, 44, 407, 380, 300, 41, 145, 136, 20, 35, 301, 475, 142, 78, 413, 265, 279, 12], actural_output [505, 109, 209, 454, 11, 510, 107, 372, 370, 12, 459, 124, 85, 23, 508, 236, 406, 444, 299, 76, 238, 133, 236, 511, 411, 240, 328, 293, 281, 140, 158, 499, 294, 431, 340, 364, 267, 59, 375, 167, 81, 123, 84, 396, 44, 407, 380, 300, 41, 145, 136, 20, 35, 301, 475, 142, 78, 413, 265, 279, 12] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[1m[33mwarning[0m[1m:[0m `xorf` (lib) generated 1 warning
-[1m[32m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 2.80s
-[1m[32m     Running[0m `target/release/keyword-pir-lwe --logm 24 -l 1774 -e 56 --plaintext-bits 9`
-logm: 24
-m = 2^24 = 16777216
-LWE 维度: 1774
-元素大小（bit）: 56
-明文位数: 9
-^C
-^C
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.22s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 18 -l 1774 -e 1056 --plaintext-bits 10`
+logm: 18
+m = 2^18 = 262144
+LWE dimension: 1774
+entry length (bit): 1056
+plaintext length: 10
+Time elapsed in A cdot bd         : 40.741175812s
+ client hint, A cdot db size      : 0.71733093 Mbytes
+row: 106, col: 303104
+Time elapsed in client pre-query  : 386.09505ms
+Time elapsed in client onl-query  : 485.527µs
+Time elapsed in client query      : 485.527µs
+Size of query                     : 1184.0 Kbytes
+Time elapsed in server respond    : 17.601157ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 8.722µs
+expect_output [898, 865, 277, 247, 904, 320, 316, 103, 431, 740, 181, 967, 602, 589, 410, 638, 398, 761, 684, 457, 992, 743, 265, 759, 26, 484, 546, 508, 975, 882, 624, 468, 917, 553, 930, 430, 976, 42, 692, 1010, 874, 692, 840, 445, 892, 858, 75, 904, 157, 761, 860, 533, 399, 505, 791, 1019, 865, 171, 1014, 184, 460, 274, 550, 716, 260, 673, 654, 879, 408, 613, 299, 199, 35, 339, 223, 10, 117, 289, 626, 685, 903, 642, 279, 835, 811, 199, 403, 697, 880, 765, 789, 952, 166, 759, 312, 365, 529, 134, 519, 621, 438, 842, 584, 15, 25, 27], actural_output [898, 865, 277, 247, 904, 320, 316, 103, 431, 740, 181, 967, 602, 589, 410, 638, 398, 761, 684, 457, 992, 743, 265, 759, 26, 484, 546, 508, 975, 882, 624, 468, 917, 553, 930, 430, 976, 42, 692, 1010, 874, 692, 840, 445, 892, 858, 75, 904, 157, 761, 860, 533, 399, 505, 791, 1019, 865, 171, 1014, 184, 460, 274, 550, 716, 260, 673, 654, 879, 408, 613, 299, 199, 35, 339, 223, 10, 117, 289, 626, 685, 903, 642, 279, 835, 811, 199, 403, 697, 880, 765, 789, 952, 166, 759, 312, 365, 529, 134, 519, 621, 438, 842, 584, 15, 25, 27] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
 
-[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ 
-[?2004l[?2004h]0;hit@hits: ~/workspace/chalamet[01;32mhit@hits[00m:[01;34m~/workspace/chalamet[00m$ [?2004l
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.06s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 20 -l 1774 -e 1056 --plaintext-bits 9`
+logm: 20
+m = 2^20 = 1048576
+LWE dimension: 1774
+entry length (bit): 1056
+plaintext length: 9
+Time elapsed in A cdot bd         : 175.937262253s
+ client hint, A cdot db size      : 0.7985382 Mbytes
+row: 118, col: 1179648
+Time elapsed in client pre-query  : 1.496839386s
+Time elapsed in client onl-query  : 1.775415ms
+Time elapsed in client query      : 1.775415ms
+Size of query                     : 4608.0 Kbytes
+Time elapsed in server respond    : 81.420407ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 12.337µs
+expect_output [410, 230, 412, 500, 79, 326, 461, 487, 375, 346, 413, 400, 178, 345, 421, 82, 411, 500, 387, 81, 327, 115, 16, 297, 52, 317, 88, 374, 127, 170, 510, 356, 228, 317, 511, 496, 153, 119, 295, 116, 18, 146, 437, 303, 21, 236, 437, 249, 34, 346, 419, 284, 233, 187, 354, 5, 164, 8, 343, 85, 100, 346, 391, 466, 404, 328, 211, 51, 178, 382, 361, 132, 495, 220, 17, 388, 453, 476, 459, 72, 254, 206, 104, 359, 301, 251, 204, 254, 379, 454, 447, 151, 71, 435, 124, 274, 355, 309, 243, 327, 210, 102, 332, 46, 225, 83, 181, 273, 226, 360, 107, 451, 445, 87, 74, 458, 482, 5], actural_output [410, 230, 412, 500, 79, 326, 461, 487, 375, 346, 413, 400, 178, 345, 421, 82, 411, 500, 387, 81, 327, 115, 16, 297, 52, 317, 88, 374, 127, 170, 510, 356, 228, 317, 511, 496, 153, 119, 295, 116, 18, 146, 437, 303, 21, 236, 437, 249, 34, 346, 419, 284, 233, 187, 354, 5, 164, 8, 343, 85, 100, 346, 391, 466, 404, 328, 211, 51, 178, 382, 361, 132, 495, 220, 17, 388, 453, 476, 459, 72, 254, 206, 104, 359, 301, 251, 204, 254, 379, 454, 447, 151, 71, 435, 124, 274, 355, 309, 243, 327, 210, 102, 332, 46, 225, 83, 181, 273, 226, 360, 107, 451, 445, 87, 74, 458, 482, 5] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
+
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.19s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 1056 --plaintext-bits 9`
+logm: 22
+m = 2^22 = 4194304
+LWE dimension: 1774
+entry length (bit): 1056
+plaintext length: 9
+Time elapsed in A cdot bd         : 802.955932868s
+ client hint, A cdot db size      : 0.7985382 Mbytes
+row: 118, col: 4718592
+Time elapsed in client pre-query  : 6.896834144s
+Time elapsed in client onl-query  : 6.177989ms
+Time elapsed in client query      : 6.177989ms
+Size of query                     : 18432.0 Kbytes
+Time elapsed in server respond    : 520.859953ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 10.628µs
+expect_output [97, 444, 131, 448, 256, 2, 291, 416, 117, 507, 163, 437, 123, 160, 213, 36, 280, 43, 19, 109, 386, 268, 161, 170, 58, 472, 453, 251, 266, 437, 251, 131, 156, 124, 119, 46, 203, 154, 250, 209, 481, 143, 349, 439, 256, 319, 496, 283, 502, 367, 465, 53, 106, 215, 120, 345, 130, 157, 259, 127, 3, 64, 237, 412, 55, 363, 511, 109, 135, 174, 160, 112, 282, 24, 145, 368, 312, 106, 130, 34, 7, 199, 96, 265, 75, 505, 405, 360, 261, 59, 276, 153, 351, 198, 294, 444, 22, 424, 48, 97, 412, 73, 497, 205, 474, 486, 4, 383, 462, 75, 193, 430, 150, 381, 21, 337, 215, 6], actural_output [97, 444, 131, 448, 256, 2, 291, 416, 117, 507, 163, 437, 123, 160, 213, 36, 280, 43, 19, 109, 386, 268, 161, 170, 58, 472, 453, 251, 266, 437, 251, 131, 156, 124, 119, 46, 203, 154, 250, 209, 481, 143, 349, 439, 256, 319, 496, 283, 502, 367, 465, 53, 106, 215, 120, 345, 130, 157, 259, 127, 3, 64, 237, 412, 55, 363, 511, 109, 135, 174, 160, 112, 282, 24, 145, 368, 312, 106, 130, 34, 7, 199, 96, 265, 75, 505, 405, 360, 261, 59, 276, 153, 351, 198, 294, 444, 22, 424, 48, 97, 412, 73, 497, 205, 474, 486, 4, 383, 462, 75, 193, 430, 150, 381, 21, 337, 215, 6] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
+
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.20s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 18 -l 1774 -e 2080 --plaintext-bits 10`
+logm: 18
+m = 2^18 = 262144
+LWE dimension: 1774
+entry length (bit): 2080
+plaintext length: 10
+Time elapsed in A cdot bd         : 68.338690594s
+ client hint, A cdot db size      : 1.4075928 Mbytes
+row: 208, col: 303104
+Time elapsed in client pre-query  : 387.23986ms
+Time elapsed in client onl-query  : 484.424µs
+Time elapsed in client query      : 484.424µs
+Size of query                     : 1184.0 Kbytes
+Time elapsed in server respond    : 34.601451ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 14.972µs
+expect_output [15, 799, 598, 776, 877, 1004, 279, 18, 596, 898, 448, 903, 603, 283, 914, 904, 1015, 981, 157, 236, 969, 356, 718, 304, 982, 540, 972, 97, 617, 715, 782, 282, 559, 854, 392, 863, 945, 72, 382, 470, 807, 296, 604, 887, 283, 408, 43, 978, 487, 890, 395, 938, 272, 600, 296, 718, 843, 315, 971, 484, 120, 273, 960, 581, 972, 1019, 109, 338, 695, 705, 507, 372, 48, 884, 958, 603, 703, 912, 390, 478, 716, 766, 547, 811, 97, 291, 567, 70, 193, 288, 682, 913, 797, 229, 650, 259, 534, 312, 847, 794, 190, 465, 446, 690, 390, 722, 772, 986, 521, 73, 308, 688, 637, 130, 908, 603, 72, 260, 379, 410, 83, 444, 378, 255, 544, 288, 958, 850, 669, 717, 330, 761, 797, 971, 105, 486, 540, 871, 63, 258, 65, 338, 505, 639, 874, 454, 326, 387, 383, 831, 703, 87, 647, 211, 792, 923, 178, 544, 946, 116, 400, 47, 606, 417, 479, 776, 816, 888, 780, 182, 471, 20, 716, 106, 521, 723, 722, 529, 940, 817, 724, 453, 948, 832, 831, 68, 510, 551, 167, 612, 874, 83, 707, 1001, 517, 641, 227, 805, 795, 256, 797, 315, 353, 808, 197, 711, 103, 212], actural_output [15, 799, 598, 776, 877, 1004, 279, 18, 596, 898, 448, 903, 603, 283, 914, 904, 1015, 981, 157, 236, 969, 356, 718, 304, 982, 540, 972, 97, 617, 715, 782, 282, 559, 854, 392, 863, 945, 72, 382, 470, 807, 296, 604, 887, 283, 408, 43, 978, 487, 890, 395, 938, 272, 600, 296, 718, 843, 315, 971, 484, 120, 273, 960, 581, 972, 1019, 109, 338, 695, 705, 507, 372, 48, 884, 958, 603, 703, 912, 390, 478, 716, 766, 547, 811, 97, 291, 567, 70, 193, 288, 682, 913, 797, 229, 650, 259, 534, 312, 847, 794, 190, 465, 446, 690, 390, 722, 772, 986, 521, 73, 308, 688, 637, 130, 908, 603, 72, 260, 379, 410, 83, 444, 378, 255, 544, 288, 958, 850, 669, 717, 330, 761, 797, 971, 105, 486, 540, 871, 63, 258, 65, 338, 505, 639, 874, 454, 326, 387, 383, 831, 703, 87, 647, 211, 792, 923, 178, 544, 946, 116, 400, 47, 606, 417, 479, 776, 816, 888, 780, 182, 471, 20, 716, 106, 521, 723, 722, 529, 940, 817, 724, 453, 948, 832, 831, 68, 510, 551, 167, 612, 874, 83, 707, 1001, 517, 641, 227, 805, 795, 256, 797, 315, 353, 808, 197, 711, 103, 212] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
+
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.07s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 20 -l 1774 -e 2080 --plaintext-bits 9`
+logm: 20
+m = 2^20 = 1048576
+LWE dimension: 1774
+entry length (bit): 2080
+plaintext length: 9
+Time elapsed in A cdot bd         : 332.176856765s
+ client hint, A cdot db size      : 1.5700073 Mbytes
+row: 232, col: 1179648
+Time elapsed in client pre-query  : 1.491959659s
+Time elapsed in client onl-query  : 1.791308ms
+Time elapsed in client query      : 1.791308ms
+Size of query                     : 4608.0 Kbytes
+Time elapsed in server respond    : 164.666342ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 18.673µs
+expect_output [123, 501, 100, 473, 100, 508, 472, 253, 420, 222, 348, 301, 239, 214, 342, 310, 373, 330, 430, 416, 169, 372, 414, 464, 361, 200, 19, 175, 321, 132, 255, 88, 252, 281, 109, 304, 256, 243, 314, 319, 97, 214, 249, 158, 121, 180, 253, 109, 87, 293, 168, 277, 438, 100, 134, 33, 301, 238, 389, 437, 243, 70, 57, 311, 33, 1, 376, 64, 107, 46, 340, 347, 25, 149, 116, 307, 149, 85, 187, 360, 269, 483, 242, 494, 467, 65, 64, 408, 432, 449, 226, 130, 28, 150, 16, 502, 152, 120, 276, 118, 421, 372, 30, 418, 385, 63, 56, 263, 386, 259, 440, 132, 446, 28, 348, 87, 468, 6, 203, 404, 272, 27, 113, 170, 82, 104, 15, 233, 222, 279, 70, 234, 386, 470, 422, 250, 274, 428, 466, 327, 33, 225, 472, 177, 194, 149, 59, 349, 396, 296, 167, 49, 140, 263, 124, 242, 384, 495, 68, 495, 390, 67, 293, 299, 148, 122, 58, 223, 45, 482, 420, 497, 216, 336, 198, 386, 321, 64, 227, 483, 22, 435, 362, 277, 294, 104, 101, 18, 423, 358, 216, 101, 366, 272, 45, 141, 236, 251, 464, 500, 146, 366, 369, 113, 151, 445, 381, 194, 341, 78, 436, 276, 251, 265, 23, 178, 221, 466, 369, 253, 28, 405, 45, 463, 30, 173, 185, 87, 294, 398, 502, 0], actural_output [123, 501, 100, 473, 100, 508, 472, 253, 420, 222, 348, 301, 239, 214, 342, 310, 373, 330, 430, 416, 169, 372, 414, 464, 361, 200, 19, 175, 321, 132, 255, 88, 252, 281, 109, 304, 256, 243, 314, 319, 97, 214, 249, 158, 121, 180, 253, 109, 87, 293, 168, 277, 438, 100, 134, 33, 301, 238, 389, 437, 243, 70, 57, 311, 33, 1, 376, 64, 107, 46, 340, 347, 25, 149, 116, 307, 149, 85, 187, 360, 269, 483, 242, 494, 467, 65, 64, 408, 432, 449, 226, 130, 28, 150, 16, 502, 152, 120, 276, 118, 421, 372, 30, 418, 385, 63, 56, 263, 386, 259, 440, 132, 446, 28, 348, 87, 468, 6, 203, 404, 272, 27, 113, 170, 82, 104, 15, 233, 222, 279, 70, 234, 386, 470, 422, 250, 274, 428, 466, 327, 33, 225, 472, 177, 194, 149, 59, 349, 396, 296, 167, 49, 140, 263, 124, 242, 384, 495, 68, 495, 390, 67, 293, 299, 148, 122, 58, 223, 45, 482, 420, 497, 216, 336, 198, 386, 321, 64, 227, 483, 22, 435, 362, 277, 294, 104, 101, 18, 423, 358, 216, 101, 366, 272, 45, 141, 236, 251, 464, 500, 146, 366, 369, 113, 151, 445, 381, 194, 341, 78, 436, 276, 251, 265, 23, 178, 221, 466, 369, 253, 28, 405, 45, 463, 30, 173, 185, 87, 294, 398, 502, 0] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
+
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.23s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 2080 --plaintext-bits 9`
+logm: 22
+m = 2^22 = 4194304
+LWE dimension: 1774
+entry length (bit): 2080
+plaintext length: 9
+Time elapsed in A cdot bd         : 1355.458436627s
+ client hint, A cdot db size      : 1.5700073 Mbytes
+row: 232, col: 4718592
+Time elapsed in client pre-query  : 6.016970016s
+Time elapsed in client onl-query  : 16.790327ms
+Time elapsed in client query      : 16.790327ms
+Size of query                     : 18432.0 Kbytes
+Time elapsed in server respond    : 693.19945ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 15.574µs
+expect_output [352, 200, 102, 52, 88, 60, 139, 119, 30, 381, 234, 344, 274, 151, 395, 189, 283, 291, 489, 127, 331, 466, 150, 9, 258, 165, 14, 178, 92, 14, 186, 270, 242, 410, 22, 369, 122, 40, 484, 471, 381, 346, 467, 328, 270, 333, 31, 88, 287, 24, 437, 223, 317, 63, 280, 360, 22, 27, 399, 246, 290, 491, 218, 146, 281, 406, 193, 162, 503, 250, 43, 122, 126, 77, 153, 77, 390, 219, 354, 399, 279, 17, 55, 48, 400, 28, 60, 348, 23, 296, 148, 214, 99, 503, 94, 185, 370, 398, 288, 424, 297, 90, 172, 32, 272, 452, 468, 41, 311, 370, 13, 185, 321, 48, 173, 2, 427, 354, 413, 481, 132, 510, 370, 497, 510, 298, 55, 462, 386, 142, 388, 103, 455, 468, 177, 245, 319, 475, 195, 230, 128, 357, 62, 229, 282, 362, 38, 74, 387, 380, 329, 50, 478, 394, 350, 387, 45, 35, 244, 409, 197, 143, 233, 320, 76, 493, 194, 317, 6, 445, 85, 14, 499, 435, 309, 132, 352, 339, 162, 110, 448, 149, 3, 188, 78, 115, 365, 203, 237, 45, 72, 277, 20, 181, 385, 25, 4, 299, 259, 262, 253, 291, 133, 333, 432, 113, 219, 81, 106, 446, 365, 511, 103, 338, 498, 417, 214, 91, 458, 228, 108, 397, 84, 290, 264, 432, 390, 185, 313, 442, 228, 1], actural_output [352, 200, 102, 52, 88, 60, 139, 119, 30, 381, 234, 344, 274, 151, 395, 189, 283, 291, 489, 127, 331, 466, 150, 9, 258, 165, 14, 178, 92, 14, 186, 270, 242, 410, 22, 369, 122, 40, 484, 471, 381, 346, 467, 328, 270, 333, 31, 88, 287, 24, 437, 223, 317, 63, 280, 360, 22, 27, 399, 246, 290, 491, 218, 146, 281, 406, 193, 162, 503, 250, 43, 122, 126, 77, 153, 77, 390, 219, 354, 399, 279, 17, 55, 48, 400, 28, 60, 348, 23, 296, 148, 214, 99, 503, 94, 185, 370, 398, 288, 424, 297, 90, 172, 32, 272, 452, 468, 41, 311, 370, 13, 185, 321, 48, 173, 2, 427, 354, 413, 481, 132, 510, 370, 497, 510, 298, 55, 462, 386, 142, 388, 103, 455, 468, 177, 245, 319, 475, 195, 230, 128, 357, 62, 229, 282, 362, 38, 74, 387, 380, 329, 50, 478, 394, 350, 387, 45, 35, 244, 409, 197, 143, 233, 320, 76, 493, 194, 317, 6, 445, 85, 14, 499, 435, 309, 132, 352, 339, 162, 110, 448, 149, 3, 188, 78, 115, 365, 203, 237, 45, 72, 277, 20, 181, 385, 25, 4, 299, 259, 262, 253, 291, 133, 333, 432, 113, 219, 81, 106, 446, 365, 511, 103, 338, 498, 417, 214, 91, 458, 228, 108, 397, 84, 290, 264, 432, 390, 185, 313, 442, 228, 1] 
+[?2004h]0;dev@lianghuiqiang: ~/workspace/chalamet[01;32mdev@lianghuiqiang[00m:[01;34m~/workspace/chalamet[00m$ [?2004l
+
 exit
 
-Script done on 2025-06-12 17:08:53+00:00 [COMMAND_EXIT_CODE="130"]
+Script started on 2026-04-10 07:17:23+00:00 [TERM="xterm-256color" TTY="/dev/pts/33" COLUMNS="180" LINES="22"]
+[?2004h]0;dev@lianghuiqiang: ~/workspace/chalamet[01;32mdev@lianghuiqiang[00m:[01;34m~/workspace/chalamet[00m$ bash run.sh 
+[?2004l
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
+
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.10s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 1056 --plaintext-bits 9`
+logm: 22
+m = 2^22 = 4194304
+LWE dimension: 1774
+entry length (bit): 1056
+plaintext length: 9
+Time elapsed in A cdot bd         : 891.00193434s
+ client hint, A cdot db size      : 0.7985382 Mbytes
+row: 118, col: 4718592
+Time elapsed in client pre-query  : 5.958324098s
+Time elapsed in client onl-query  : 7.789711ms
+Time elapsed in client query      : 7.789711ms
+Size of query                     : 18432.0 Kbytes
+Time elapsed in server respond    : 433.305078ms
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 13.087µs
+expect_output [344, 53, 491, 323, 112, 37, 211, 48, 334, 444, 417, 261, 88, 476, 40, 433, 244, 32, 437, 197, 15, 311, 156, 73, 391, 234, 463, 303, 254, 241, 190, 510, 162, 234, 359, 371, 268, 305, 278, 494, 405, 479, 278, 159, 456, 342, 325, 206, 300, 248, 126, 487, 461, 458, 339, 499, 39, 301, 329, 147, 285, 14, 323, 232, 128, 31, 158, 248, 216, 261, 475, 72, 503, 360, 308, 301, 422, 5, 386, 1, 323, 459, 212, 190, 251, 221, 118, 208, 159, 394, 285, 267, 31, 204, 314, 253, 488, 457, 473, 271, 368, 120, 87, 141, 23, 96, 406, 387, 27, 441, 354, 454, 335, 424, 132, 422, 269, 2], actural_output [344, 53, 491, 323, 112, 37, 211, 48, 334, 444, 417, 261, 88, 476, 40, 433, 244, 32, 437, 197, 15, 311, 156, 73, 391, 234, 463, 303, 254, 241, 190, 510, 162, 234, 359, 371, 268, 305, 278, 494, 405, 479, 278, 159, 456, 342, 325, 206, 300, 248, 126, 487, 461, 458, 339, 499, 39, 301, 329, 147, 285, 14, 323, 232, 128, 31, 158, 248, 216, 261, 475, 72, 503, 360, 308, 301, 422, 5, 386, 1, 323, 459, 212, 190, 251, 221, 118, 208, 159, 394, 285, 267, 31, 204, 314, 253, 488, 457, 473, 271, 368, 120, 87, 141, 23, 96, 406, 387, 27, 441, 354, 454, 335, 424, 132, 422, 269, 2] 
+[1m[33mwarning[0m[1m: unexpected `cfg` condition value: `nightly`[0m
+  [1m[94m--> [0mbff-modp/src/lib.rs:65:13
+   [1m[94m|[0m
+[1m[94m65[0m [1m[94m|[0m #![cfg_attr(feature = "nightly", feature(allocator_internals), needs_allocator)]
+   [1m[94m|[0m             [1m[33m^^^^^^^^^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: expected values for `feature` are: `binary-fuse`, `binary-fuse-modp`, `default`, `hashbrown`, `libm`, `num-traits`, `rand`, `serde`, and `uniform-random`
+   [1m[94m= [0m[1mhelp[0m: consider adding `nightly` as a feature in `Cargo.toml`
+   [1m[94m= [0m[1mnote[0m: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+   [1m[94m= [0m[1mnote[0m: `#[warn(unexpected_cfgs)]` on by default
+
+[1m[33mwarning[0m: `xorf` (lib) generated 1 warning
+[1m[92m    Finished[0m ]8;;https://doc.rust-lang.org/cargo/reference/profiles.html#default-profiles\`release` profile [optimized]]8;;\ target(s) in 0.23s
+[1m[92m     Running[0m `target/release/keyword-pir-lwe --logm 22 -l 1774 -e 2080 --plaintext-bits 9`
+logm: 22
+m = 2^22 = 4194304
+LWE dimension: 1774
+entry length (bit): 2080
+plaintext length: 9
+Time elapsed in A cdot bd         : 1601.564088601s
+ client hint, A cdot db size      : 1.5700073 Mbytes
+row: 232, col: 4718592
+Time elapsed in client pre-query  : 6.268315489s
+Time elapsed in client onl-query  : 18.862637ms
+Time elapsed in client query      : 18.862637ms
+Size of query                     : 18432.0 Kbytes
+Time elapsed in server respond    : 1.155386063s
+Size of response                  : 0.0234375 Kbytes
+Time elapsed in client reconstruct: 21.097µs
+expect_output [314, 305, 263, 138, 15, 122, 134, 345, 242, 239, 149, 274, 332, 117, 66, 504, 256, 287, 108, 128, 435, 477, 139, 341, 388, 100, 198, 380, 494, 414, 279, 62, 96, 361, 478, 86, 4, 12, 421, 313, 101, 126, 146, 59, 195, 458, 134, 271, 175, 264, 366, 352, 88, 416, 432, 1, 82, 301, 404, 90, 160, 419, 87, 283, 108, 126, 74, 206, 146, 268, 293, 365, 226, 184, 409, 451, 69, 455, 2, 106, 374, 127, 419, 35, 469, 376, 459, 423, 383, 340, 251, 320, 141, 143, 157, 355, 257, 38, 478, 180, 307, 424, 163, 96, 316, 315, 50, 75, 508, 196, 296, 127, 470, 24, 257, 291, 289, 417, 173, 85, 83, 274, 467, 377, 123, 394, 484, 183, 499, 207, 419, 363, 408, 318, 160, 21, 287, 73, 177, 107, 361, 216, 50, 477, 230, 162, 85, 151, 365, 107, 376, 199, 227, 487, 90, 270, 57, 47, 161, 379, 243, 191, 446, 114, 83, 481, 259, 111, 324, 41, 168, 366, 462, 20, 436, 145, 213, 117, 241, 423, 336, 477, 393, 167, 142, 376, 500, 229, 246, 258, 459, 288, 493, 315, 104, 114, 423, 424, 69, 218, 325, 263, 235, 269, 495, 303, 415, 428, 228, 385, 45, 473, 209, 288, 211, 42, 107, 152, 269, 22, 78, 41, 167, 373, 1, 117, 25, 155, 110, 304, 293, 1], actural_output [314, 305, 263, 138, 15, 122, 134, 345, 242, 239, 149, 274, 332, 117, 66, 504, 256, 287, 108, 128, 435, 477, 139, 341, 388, 100, 198, 380, 494, 414, 279, 62, 96, 361, 478, 86, 4, 12, 421, 313, 101, 126, 146, 59, 195, 458, 134, 271, 175, 264, 366, 352, 88, 416, 432, 1, 82, 301, 404, 90, 160, 419, 87, 283, 108, 126, 74, 206, 146, 268, 293, 365, 226, 184, 409, 451, 69, 455, 2, 106, 374, 127, 419, 35, 469, 376, 459, 423, 383, 340, 251, 320, 141, 143, 157, 355, 257, 38, 478, 180, 307, 424, 163, 96, 316, 315, 50, 75, 508, 196, 296, 127, 470, 24, 257, 291, 289, 417, 173, 85, 83, 274, 467, 377, 123, 394, 484, 183, 499, 207, 419, 363, 408, 318, 160, 21, 287, 73, 177, 107, 361, 216, 50, 477, 230, 162, 85, 151, 365, 107, 376, 199, 227, 487, 90, 270, 57, 47, 161, 379, 243, 191, 446, 114, 83, 481, 259, 111, 324, 41, 168, 366, 462, 20, 436, 145, 213, 117, 241, 423, 336, 477, 393, 167, 142, 376, 500, 229, 246, 258, 459, 288, 493, 315, 104, 114, 423, 424, 69, 218, 325, 263, 235, 269, 495, 303, 415, 428, 228, 385, 45, 473, 209, 288, 211, 42, 107, 152, 269, 22, 78, 41, 167, 373, 1, 117, 25, 155, 110, 304, 293, 1] 
+[?2004h]0;dev@lianghuiqiang: ~/workspace/chalamet[01;32mdev@lianghuiqiang[00m:[01;34m~/workspace/chalamet[00m$ 
+[K
+]0;dev@lianghuiqiang: ~/workspace/chalamet[01;32mdev@lianghuiqiang[00m:[01;34m~/workspace/chalamet[00m$ 
+[K
+]0;dev@lianghuiqiang: ~/workspace/chalamet[01;32mdev@lianghuiqiang[00m:[01;34m~/workspace/chalamet[00m$ 

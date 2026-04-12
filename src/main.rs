@@ -1,6 +1,5 @@
 use keyword_pir_lwe::api::{
-    generate_kv_query_params, BaseParams,
-    CommonParams, KVShard, Response,
+    BaseParams, CommonParams, KVShard, Response, generate_kv_query_params, generate_kv_query_params_lhs, generate_kv_query_params_rhs
   };
 use keyword_pir_lwe::db::KeyValue;
 use std::time::Instant;
@@ -93,14 +92,14 @@ fn main(){
 
   println!("logm: {}", args.logm);
   println!("m = 2^{} = {}", args.logm, m);
-  println!("LWE 维度: {}", args.lwe_dim);
-  println!("元素大小（bit）: {}", args.elem_size);
-  println!("明文位数: {}", args.plaintext_bits);
+  println!("LWE dimension: {}", args.lwe_dim);
+  println!("entry length (bit): {}", args.elem_size);
+  println!("plaintext length: {}", args.plaintext_bits);
 
   let kv_db_eles = generate_kv_db_elems(m, (args.elem_size + 7) / 8); // +7 完全是为了多取一个u8
   let keys: Vec<String> = kv_db_eles.iter().map(|e| e.0.clone()).collect();
   let values: Vec<String> = kv_db_eles.iter().map(|e| e.1.clone()).collect();
-  //let _start = Instant::now();
+  let _start = Instant::now();
   let shard = KVShard::from_base64_strings(
     &keys,
     &values,
@@ -110,9 +109,11 @@ fn main(){
     args.plaintext_bits,
   )
   .unwrap();
-  //let _duration = _start.elapsed();
-  //println!("Time elapsed in bff: {:?}", _duration);
-  println!("A cdot db size                    : {:?} Kbytes", (total_data_size(&shard.get_base_params().get_rhs()) as f32)/(1024 as f32));
+  let _duration = _start.elapsed();
+  println!("Time elapsed in generate db and hint: {:?}", _duration);
+  println!(" client hint, A cdot db size      : {:?} Mbytes", (total_data_size(&shard.get_base_params().get_rhs()) as f32)/(1024 as f32)/(1024 as f32));
+  //println!(" client hint, shard size              : {:?} Kbytes", (32+8+8+8+8+8+32+8+8) as f32 / 1024.0);
+
   //println!("Size of _q: {:?} Kbytes", mem::size_of_val(_q.as_slice())/1024);
 
   let example_kv:(String, String)=(keys[0].clone(), values[0].clone());
@@ -145,14 +146,16 @@ fn main(){
   //let w = db.get_row_width_self();
   //println!("w: {:?}",w);
   let _start = Instant::now();
-  let mut _qp = generate_kv_query_params(&cp, bp).unwrap();
+  //let mut _qp = generate_kv_query_params(&cp, bp).unwrap();
+  let mut _qp = generate_kv_query_params_lhs(&cp, bp).unwrap();
   let _duration = _start.elapsed();
   println!("Time elapsed in client pre-query  : {:?}", _duration);
 
   let _start = Instant::now();
   let _q = _qp.generate_query(&kv.key).unwrap();
-  let _duration = _start.elapsed();
-  println!("Time elapsed in client query      : {:?}", _duration);
+  let _duration2 = _start.elapsed();
+  println!("Time elapsed in client onl-query  : {:?}", _duration2);
+  println!("Time elapsed in client query      : {:?}", _duration+_duration2);
   //println!("_q {:?} ", _q);
   //let _qq=_q.as_slice();
   //println!("_qq {:?} ", _qq);
@@ -165,15 +168,17 @@ fn main(){
   println!("Time elapsed in server respond    : {:?}", _duration);
   //println!("_resp {:?} ", _resp);
   //println!("_resp.len(): {:?}",_resp.len());
-  println!("Size of response                  : {:?} bytes", mem::size_of_val(&_resp)); // 切片指向的数据大小（不是指针本身）
+  println!("Size of response                  : {:?} Kbytes", (mem::size_of_val(&_resp) as f32) /1024.0); // 切片指向的数据大小（不是指针本身）
 
   let _start = Instant::now();
+  generate_kv_query_params_rhs(&mut _qp, bp).unwrap();
   let resp: Response = bincode::deserialize(&_resp).unwrap();
   //println!("kv.key : {:?}",kv.key);
   let output = _qp.parse_resp_as_row(&resp, &kv.key).unwrap();
   let _duration = _start.elapsed();
   println!("Time elapsed in client reconstruct: {:?}", _duration);
-  println!("expect_output {:?}, actural_output {:?} ", kv.value, output);
+  println!("expect_output  {:?} ", kv.value);
+  println!("actural_output {:?} ", output);
   //assert_eq!(output, kv.value);
 
 

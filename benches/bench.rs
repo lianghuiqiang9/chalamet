@@ -1,7 +1,6 @@
 use criterion::{criterion_group, criterion_main, BenchmarkGroup, Criterion};
 use keyword_pir_lwe::api::{
-  generate_index_query_params, generate_kv_query_params, BaseParams,
-  CommonParams, KVShard, Response, Shard,
+  BaseParams, CommonParams, KVShard, Response, Shard, generate_index_query_params, generate_kv_query_params, generate_kv_query_params_lhs, generate_kv_query_params_rhs
 };
 use keyword_pir_lwe::db::{DatabaseMatrix, KeyValue};
 use pi_rs_cli_utils::*;
@@ -36,6 +35,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     let kv_db_eles = bench_utils::generate_kv_db_elems(m, (elem_size + 7) / 8);
     let keys: Vec<String> = kv_db_eles.iter().map(|e| e.0.clone()).collect();
     let values: Vec<String> = kv_db_eles.iter().map(|e| e.1.clone()).collect();
+    
     //let _start = Instant::now();
     let shard = KVShard::from_base64_strings(
       &keys,
@@ -48,7 +48,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     .unwrap();
     //let _duration = _start.elapsed();
     //println!("Time elapsed in bff: {:?}", _duration);
-    println!("A cdot db size : {:?} Kbytes", total_data_size(&shard.get_base_params().get_rhs())/1024);
+    println!(" client hint, A cdot db size      : {:?} Mbytes", (total_data_size(&shard.get_base_params().get_rhs()) as f32)/(1024 as f32)/(1024 as f32));
     //println!("Size of _q: {:?} Kbytes", mem::size_of_val(_q.as_slice())/1024);
 
     println!("[KV] Setup complete, starting benchmarks...");
@@ -62,7 +62,7 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     if offline {
       println!("[KV] Benchmarking offline steps...");
-      lwe_group.sample_size(10);
+      lwe_group.sample_size(3);
       lwe_group.measurement_time(Duration::from_secs(100)); // To remove a warning, you can increase this to 500 or more.
       _bench_kv_db_generation(&mut lwe_group, &shard, &keys, &values);
     }
@@ -301,24 +301,24 @@ fn _bench_client_kv_query(
 
   let resp: Response = bincode::deserialize(&_resp).unwrap();
   let output = _qp.parse_resp_as_row(&resp, &kv.key).unwrap();
-  println!("expect_output {:?}, actural_output {:?} ", kv.value, output);
+  //println!("expect_output {:?}, actural_output {:?} ", kv.value, output);
   //assert_eq!(output, kv.value);
 
   c.bench_function(
     format!(
-      "[KV] create client query params, lwe_dim: {}, matrix_height: {}, omega: {}",
+      "[KV] create client pre-query params, lwe_dim: {}, matrix_height: {}, omega: {}",
       bp.get_dim(),
       db.get_matrix_height(),
       w
     ),
     |b| {
-      b.iter(|| generate_kv_query_params(&cp, bp));
+      b.iter(|| generate_kv_query_params_lhs(&cp, bp));
     },
   );
 
   c.bench_function(
     format!(
-      "[KV] create client query prepare, lwe_dim: {}, matrix_height: {}, omega: {}",
+      "[KV] create client query, lwe_dim: {}, matrix_height: {}, omega: {}",
       bp.get_dim(),
       db.get_matrix_height(),
       w
@@ -347,13 +347,14 @@ fn _bench_client_kv_query(
 
   c.bench_function(
     format!(
-      "[KV] client parse server response, lwe_dim: {}, matrix_height: {}, omega: {}",
+      "[KV] client parse server response, e.g. reconstruct, lwe_dim: {}, matrix_height: {}, omega: {}",
       bp.get_dim(),
       db.get_matrix_height(),
       w
     ),
     |b| {
       b.iter(|| {
+        generate_kv_query_params_rhs(&mut _qp, bp).unwrap();
         let deser: Response = bincode::deserialize(&_resp).unwrap();
         _qp.parse_resp_as_base64(&deser, &kv.key).unwrap();
       });

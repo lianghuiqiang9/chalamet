@@ -254,6 +254,7 @@ impl KVShard {
 /// query.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct QueryParams<DB, EP> {
+  s: Vec<u32>,
   lhs: Vec<u32>,
   rhs: Vec<u32>,
   elem_size: usize,
@@ -267,15 +268,45 @@ impl QueryParams<IndexDatabase, EmptyAuxParams> {
   /// Generates `QueryParams` for a `Database` that is not KV
   fn new(cp: &CommonParams, params: &IndexParams) -> ResultBoxedError<Self> {
     let s = random_ternary_vector(params.get_dim());
+    let lhs = cp.mult_left(&s)?;
+    let rhs = params.mult_right(&s)?;
     Ok(Self {
-      lhs: cp.mult_left(&s)?,
-      rhs: params.mult_right(&s)?,
+      s:s,
+      lhs: lhs,
+      rhs: rhs,
       elem_size: params.get_elem_size(),
       plaintext_bits: params.get_plaintext_bits(),
       db: Default::default(),
       extra_params: None,
       used: false,
     })
+  }
+  pub fn new_lhs(cp: &CommonParams, params: &IndexParams) -> ResultBoxedError<Self> {
+      let s_i32 = random_ternary_vector(params.get_dim());
+      // 将 i32 向量转为 u32 以匹配你的结构体定义
+      let s: Vec<u32> = s_i32.iter().map(|&x| x as u32).collect();
+      
+      // 计算 lhs = A * s
+      let lhs = cp.mult_left(&s_i32)?;
+
+      Ok(Self {
+          s,
+          lhs,
+          rhs: Vec::new(), // 暂时留空，等待下一步计算
+          elem_size: params.get_elem_size(),
+          plaintext_bits: params.get_plaintext_bits(),
+          db: Default::default(),
+          extra_params: None,
+          used: false,
+      })
+  }
+
+  pub fn compute_rhs(&mut self, params: &IndexParams) -> ResultBoxedError<()> {
+      // 1. 直接使用 self.s，它是 Vec<u32>，
+      // Rust 会自动通过 Deref Coercion 将 &Vec<u32> 转为 &[u32]
+      self.rhs = params.mult_right(&self.s)?;
+      
+      Ok(())
   }
 
   /// Prepares a new client query based on an input row_inde that is a digit
@@ -338,17 +369,45 @@ impl QueryParams<IndexDatabase, EmptyAuxParams> {
 impl QueryParams<KVDatabase, FilterParams> {
   /// Generates `QueryParams` for a `Database` that is KV
   fn new(cp: &CommonParams, params: &KVParams) -> ResultBoxedError<Self> {
-    let s = random_ternary_vector(params.get_dim());
+    let s: Vec<u32> = random_ternary_vector(params.get_dim());
     //println!("s.size(): {}",s.len());
     Ok(Self {
       lhs: cp.mult_left(&s)?,
       rhs: params.mult_right(&s)?,
+      s:s,
       elem_size: params.get_elem_size(),
       plaintext_bits: params.get_plaintext_bits(),
       db: Default::default(),
       extra_params: Some(params.get_filter_params()),
       used: false,
     })
+  }
+  pub fn new_lhs(cp: &CommonParams, params: &KVParams) -> ResultBoxedError<Self> {
+    let s_i32 = random_ternary_vector(params.get_dim());
+    // 将 i32 向量转为 u32 以匹配你的结构体定义
+    let s: Vec<u32> = s_i32.iter().map(|&x| x as u32).collect();
+    
+    // 计算 lhs = A * s
+    let lhs = cp.mult_left(&s_i32)?;
+
+    Ok(Self {
+        s,
+        lhs,
+        rhs: Vec::new(), // 暂时留空，等待下一步计算
+        elem_size: params.get_elem_size(),
+        plaintext_bits: params.get_plaintext_bits(),
+        db: Default::default(),
+        extra_params: Some(params.get_filter_params()),
+        used: false,
+    })
+  }
+
+  pub fn compute_rhs(&mut self, params: &KVParams) -> ResultBoxedError<()> {
+      // 1. 直接使用 self.s，它是 Vec<u32>，
+      // Rust 会自动通过 Deref Coercion 将 &Vec<u32> 转为 &[u32]
+      self.rhs = params.mult_right(&self.s)?;
+      
+      Ok(())
   }
 
   /// Prepares a new client query based on an input row_index that is a key
@@ -457,7 +516,19 @@ pub fn generate_kv_query_params(
 ) -> ResultBoxedError<QueryParams<KVDatabase, FilterParams>> {
   QueryParams::<KVDatabase, FilterParams>::new(cp, params)
 }
-
+pub fn generate_kv_query_params_lhs(
+  cp: &CommonParams,
+  params: &KVParams,
+) -> ResultBoxedError<QueryParams<KVDatabase, FilterParams>> {
+  QueryParams::<KVDatabase, FilterParams>::new_lhs(cp, params)
+}
+pub fn generate_kv_query_params_rhs(
+    query_params: &mut QueryParams<KVDatabase, FilterParams>,
+    params: &KVParams,
+) -> ResultBoxedError<()> {
+    // 调用之前定义的成员方法
+    query_params.compute_rhs(params)
+}
 /// The `Query` struct holds the necessary information encoded in
 /// a client PIR query to the server DB for a particular `row_index`. It
 /// provides methods for parsing server responses.
