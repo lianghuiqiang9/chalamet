@@ -4,7 +4,7 @@ use keyword_pir_lwe::api::{
 };
 use keyword_pir_lwe::db::{DatabaseMatrix, KeyValue};
 use pi_rs_cli_utils::*;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use std::mem;
 use keyword_pir_lwe::db::FilterParams;
 //use std::time::{Instant};
@@ -36,7 +36,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     let keys: Vec<String> = kv_db_eles.iter().map(|e| e.0.clone()).collect();
     let values: Vec<String> = kv_db_eles.iter().map(|e| e.1.clone()).collect();
     
-    //let _start = Instant::now();
+    let _start = Instant::now();
     let shard = KVShard::from_base64_strings(
       &keys,
       &values,
@@ -46,9 +46,9 @@ fn criterion_benchmark(c: &mut Criterion) {
       plaintext_bits,
     )
     .unwrap();
-    //let _duration = _start.elapsed();
-    //println!("Time elapsed in bff: {:?}", _duration);
-    println!(" client hint, A cdot db size      : {:?} Mbytes", (total_data_size(&shard.get_base_params().get_rhs()) as f32)/(1024 as f32)/(1024 as f32));
+    let _duration = _start.elapsed();
+    println!("Time elapsed in generate db and hint: {:?}", _duration);
+    println!("client hint, A cdot db size      : {:?} Mbytes", (total_data_size(&shard.get_base_params().get_rhs()) as f32)/(1024 as f32)/(1024 as f32));
     //println!("Size of _q: {:?} Kbytes", mem::size_of_val(_q.as_slice())/1024);
 
     println!("[KV] Setup complete, starting benchmarks...");
@@ -62,7 +62,7 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     if offline {
       println!("[KV] Benchmarking offline steps...");
-      lwe_group.sample_size(3);
+      lwe_group.sample_size(10);
       lwe_group.measurement_time(Duration::from_secs(100)); // To remove a warning, you can increase this to 500 or more.
       _bench_kv_db_generation(&mut lwe_group, &shard, &keys, &values);
     }

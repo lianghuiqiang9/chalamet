@@ -1,11 +1,11 @@
 
 # Benchmark
+make bench-keyword-20-22-256-2048
 
 make bench-keyword-20-256
 make bench-keyword-20-512
 make bench-keyword-20-1024
 make bench-keyword-20-2048
-
 make bench-keyword-22-256
 make bench-keyword-22-512
 make bench-keyword-22-1024
