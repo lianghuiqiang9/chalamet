@@ -1,5 +1,6 @@
 //! The `api` module is the public entry point for all PIR operations.
 use std::fs;
+use std::mem;
 use std::str;
 
 use core::marker::PhantomData;
@@ -419,6 +420,8 @@ impl QueryParams<KVDatabase, FilterParams> {
     let query_indicator = get_rounding_factor(self.plaintext_bits);
     let mut lhs = Vec::new();
     lhs.clone_from(&self.lhs.clone());
+    //let mut lhs = mem::take(&mut self.lhs);
+
     if self.extra_params.is_none() {
       return Err("No filter parameters set for KV QueryParams".into());
     }
